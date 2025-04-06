@@ -1,4 +1,4 @@
-import { createWorker } from 'tesseract.js';
+import Tesseract from 'tesseract.js';
 
 // DOM elements
 const videoInput = document.getElementById('videoInput');
@@ -23,7 +23,7 @@ let isProcessing = false;
 
 // Initialize Tesseract worker
 async function initWorker() {
-    worker = await createWorker();
+    worker = await Tesseract.createWorker();
     await worker.loadLanguage('eng');
     await worker.initialize('eng');
     console.log('Tesseract worker initialized');
@@ -245,4 +245,3 @@ window.addEventListener('beforeunload', () => {
         clearInterval(captureInterval);
     }
 });
-
